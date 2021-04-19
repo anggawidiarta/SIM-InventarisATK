@@ -11,5 +11,5 @@ user : gudang
 pass : gudang
 ==================
 staf
-user : ata
-pass : ata
+user : staf
+pass : staf
