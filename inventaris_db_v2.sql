@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Mar 16, 2021 at 01:00 PM
--- Server version: 5.7.32
--- PHP Version: 7.4.12
+-- Host: 127.0.0.1
+-- Generation Time: Apr 19, 2021 at 06:20 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `inventaris_db`
+-- Database: `inventaris_db_v2`
 --
 
 -- --------------------------------------------------------
@@ -42,10 +44,7 @@ CREATE TABLE `dt_keluarga` (
 --
 
 INSERT INTO `dt_keluarga` (`id_keluarga`, `nip`, `nama_pasangan`, `tgl_lahir_pasangan`, `jml_anak`, `telp_pasangan`, `alamat_pasangan`, `pekerjaan`) VALUES
-(9, 'PEG-1910-0001', 'Angel Karamoy', '2006-12-12', 0, '0812256789', 'Singocandi RT/RW : 03/01', 'wiraswasta'),
-(10, 'PEG-1910-0002', 'Siti Rohmah', '1972-05-12', 3, '081234567', 'Singocandi RT/RW : 03/01', 'Karyawan Swasta'),
-(11, 'PEG-1910-000333', 'test', '2021-03-05', 2, '081917304888', 'mataram', 'Guru'),
-(12, 'PEG-1910-2223', 'Annisa', '2001-01-12', 2, '0812256789', 'Singocandi RT/RW : 03/01', 'Pilot');
+(9, 'PEG-1910-0001', 'Test', '2006-12-12', 3, 'Test', 'Test', 'wiraswasta');
 
 -- --------------------------------------------------------
 
@@ -64,9 +63,11 @@ CREATE TABLE `mst_divisi` (
 --
 
 INSERT INTO `mst_divisi` (`id_divisi`, `kode_divisi`, `divisi`) VALUES
-(1, 'DEP-1910-0001', 'Keuangan'),
-(2, 'DEP-1910-0002', 'Gudang'),
-(3, 'DEP-2102-0003', 'Tata Usaha');
+(1, '-', 'Keuangan'),
+(2, '-', 'Gudang'),
+(3, '-', 'Tata Usaha'),
+(4, '-', 'Lantaskim'),
+(5, '-', 'Inteldakim');
 
 -- --------------------------------------------------------
 
@@ -85,12 +86,23 @@ CREATE TABLE `mst_jabatan` (
 --
 
 INSERT INTO `mst_jabatan` (`id_jabatan`, `kode_jabatan`, `jabatan`) VALUES
-(1, 'JAB-1910-0001', 'Staf Gudang'),
-(2, 'JAB-1910-00202', 'Kepala Gudang I'),
-(3, 'Penata (III/c)', 'Kaur Kepegawaian'),
-(4, 'Penata TK.I (III/d)', 'Kasubag Tata Usaha'),
-(5, 'Pembina TK.I (IV/a)', 'Kepala Kantor'),
-(6, 'Penata TK.I (III/d)', 'Kaur Umum');
+(1, 'I/a', 'Juru Muda'),
+(2, 'I/b', 'Juru Muda Tingkat I'),
+(3, 'III/c', 'Penata'),
+(4, 'III/d', 'Penata Tingkat I'),
+(5, 'IV/a', 'Pembina '),
+(6, 'III/a', 'Penata Muda'),
+(7, 'I/c', 'Juru'),
+(8, 'I/d', 'Juru Tingkat I'),
+(9, 'II/a', 'Pengatur Muda'),
+(10, 'II/b', 'Pengatur Muda Tingkat I'),
+(11, 'II/c', 'Pengatur'),
+(12, 'II/d', 'Pengatur Tingkat I'),
+(13, 'III/b', 'Penata Muda Tingkat I'),
+(14, 'IV/b', 'Pembina Tingkat I'),
+(15, 'IV/c', 'Pembina Utama Muda'),
+(16, 'IV/d', 'Pembina Utama Madya'),
+(17, 'IV/e', 'Pembina Utama');
 
 -- --------------------------------------------------------
 
@@ -110,7 +122,7 @@ CREATE TABLE `mst_kategori` (
 --
 
 INSERT INTO `mst_kategori` (`id_kategori`, `kode_kategori`, `nama_kategori`, `ket_kategori`) VALUES
-(6, '3.05.02.01.003', 'Kursi Besi/Metal', '-'),
+(6, '3.05.02.01.003', 'Kursi Besi/Metal', 'Bagus'),
 (7, '3.10.01.02.001', 'PC Unit', '-'),
 (8, '3.05.02.06.017', 'Unit Power Supply', '-'),
 (9, '3.05.02.02.001', 'Jam Mekanis', '-'),
@@ -155,8 +167,7 @@ CREATE TABLE `mst_pegawai` (
 --
 
 INSERT INTO `mst_pegawai` (`id_pegawai`, `kode_pegawai`, `nama_lengkap`, `sex`, `kota_lahir`, `tgl_lahir`, `alamat_skrg`, `email`, `agama`, `no_ktp`, `status`, `pend_akhir`, `image`, `pegawai_created`, `pegawai_active`) VALUES
-(2, 'PEG-1910-0001', 'I Putu Angga Purnama Widiarta', 'Pria', 'Mataram', '2000-04-18', 'Jalan Krakatau Perumahan Gegutu Indah No.23 Mataram', 'anggawidiarta55@gmail.com', 'Hindu', 1111111, 'Belum Menikah', 'S1', '7a656534-fee4-4e77-8404-c2499e148a59.jpeg', '2019-10-04', 1),
-(7, 'PEG-2102-0002', 'I Made Satya Narendra Widiarta', 'Pria', 'Mataram', '2007-07-19', 'Sayang - Sayang', 'wayanartawan053@gmail.com', 'Hindu', 111231233, 'Belum Menikah', 'SMP', 'default.jpg', '2021-02-25', 1);
+(2, 'PEG-1910-0001', 'I Putu Angga Purnama Widiarta', 'Pria', 'Mataram', '2000-04-18', 'Jalan Krakatau Perumahan Gegutu Indah No.23 Mataram', 'anggawidiarta55@gmail.com', 'Hindu', 1111111, 'Belum Menikah', 'S1', '0e5eef3f4342b575f380483570b7f562--dark-fantasy-final-fantasy.jpg', '2019-10-04', 1);
 
 -- --------------------------------------------------------
 
@@ -181,14 +192,10 @@ CREATE TABLE `mst_user` (
 --
 
 INSERT INTO `mst_user` (`id`, `nama`, `nip`, `email`, `username`, `password`, `level`, `date_created`, `is_active`) VALUES
-(21, 'Satya Narendra', '11322778', 'satyanarendrawidiarta@gmail.com', 'satya', '$2y$10$/Ww6dkhan/6cDQoT/Cjte.jJE/xoCY3Z/5WXIPKm7t3MZLFOKgDNm', 'Manager', '2021-02-24', 1),
-(22, 'Wayan Artawan', '1123495332', 'wayanartawan053@gmail.com', 'wayan', '$2y$10$fN1IV/bLz5XwHHsU1V3ffOKoNnEw5sXeq5ZEKlZ1vKXutH14GMsfS', 'Gudang', '2021-02-24', 1),
-(23, 'I Putu Angga Purnama Widiarta', '1804002000', 'anggajunior053@gmail.com', 'anggawidiarta', '$2y$10$egM4rVDGZqjoC5JGJoF12O4hKJgEURVXSg02r2RKCLQpoUdAvNGXa', 'Admin', '2021-02-24', 1),
-(24, 'adminsuper2', '12345', 'admin@admssin.com55', 'admin', '$2y$10$adZZd6keq5gLynh4ZylLOeZWpvQo.QW1p4EXoIwH.8f5SsCaJnnNi', 'Admin', '2021-02-24', 1),
-(28, 'I Made Satya Narendra Widiarta', 'PEG-2102-0002', 'wayanartawan053@gmail.com', 'usersatya', '$2y$10$9iPWs47In3mkXmrMPXqHTuS1VsWqJtNdlhgrk6j9ZLQkxgZEf7.qm', 'Staf', '2021-02-25', 1),
-(29, 'manager', '1111', 'manager@gmail.com', 'manager', '$2y$10$z9T5BpnNS2EX8xAB1ZAYZu7Y3Izgeqay739tfDCGEuyeOSjAHE7TK', 'Manager', '2021-02-25', 1),
-(30, 'staf', '555666', 'staf@gmail.com', 'staf', '$2y$10$iVxGzMzF9q2pm3tdnEKq0.s9MfJLNjMaoXI4EYKxQrDqBecvLGUe2', 'Staf', '2021-02-26', 1),
-(31, 'gudang', '9999', 'gudang@gmail.com', 'gudang', '$2y$10$HNDX.LnKA6ERmjJUbo1pyuHYAdfnydQ4wnZsduuNtjZ/KIxX8BHSO', 'Gudang', '2021-02-26', 1);
+(29, 'manager', '-', 'manager@gmail.com', 'manager', '$2y$10$z9T5BpnNS2EX8xAB1ZAYZu7Y3Izgeqay739tfDCGEuyeOSjAHE7TK', 'Manager', '2021-02-25', 1),
+(30, 'staf', '-', 'staf@gmail.com', 'staf', '$2y$10$iVxGzMzF9q2pm3tdnEKq0.s9MfJLNjMaoXI4EYKxQrDqBecvLGUe2', 'Staf', '2021-02-26', 1),
+(31, 'gudang', '-', 'gudang@gmail.com', 'gudang', '$2y$10$HNDX.LnKA6ERmjJUbo1pyuHYAdfnydQ4wnZsduuNtjZ/KIxX8BHSO', 'Gudang', '2021-02-26', 1),
+(34, 'admin', '-', 'admin@gmail.com', 'admin', '$2y$10$caIEvFrQO92v4k9LZu5akeMz47OnqIyeOO0Cy5AIG3Q/tA2CC2a5C', 'Admin', '2021-04-19', 1);
 
 -- --------------------------------------------------------
 
@@ -210,8 +217,8 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`id_barang`, `kode_barang`, `kategori_kode`, `nama_barang`, `jumlah_barang`, `ket_barang`) VALUES
-(5, 'PROD-202102-0005', 'CRG-202102-0006', 'HVS', 6, ''),
-(6, 'PROD-202102-0006', 'CRG-201910-0001', 'KIKI', 150, '');
+(5, '-', '3.10.01.02.001', 'HVS', 200, ''),
+(7, '-', '3.05.02.01.003', 'DX Racer', 50, '');
 
 -- --------------------------------------------------------
 
@@ -230,13 +237,6 @@ CREATE TABLE `tb_stock_in` (
   `jml_masuk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tb_stock_in`
---
-
-INSERT INTO `tb_stock_in` (`id_stock_in`, `sess_id`, `barang_kd`, `tgl_masuk`, `divisi_kd`, `pengirim`, `ket_barang`, `jml_masuk`) VALUES
-(6, 28, 'PROD-202102-0006', '2021-02-25', 'DEP-2102-0003', 'Anggun', '', 1000);
-
 -- --------------------------------------------------------
 
 --
@@ -253,16 +253,6 @@ CREATE TABLE `tb_stock_out` (
   `ket_barang` text NOT NULL,
   `jml_minta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_stock_out`
---
-
-INSERT INTO `tb_stock_out` (`id_stock_out`, `sess_id`, `barang_kd`, `tgl_keluar`, `divisi_kd`, `penerima`, `ket_barang`, `jml_minta`) VALUES
-(4, 28, 'PROD-202102-0006', '2021-02-18', 'DEP-2102-0003', 'Anggi', '', 900),
-(5, 28, 'PROD-202102-0005', '2021-02-28', 'DEP-2102-0003', 'Hamba Tuhan', 'Barang Bagus', 90),
-(6, 30, 'PROD-202102-0005', '2021-02-28', 'DEP-2102-0003', 'test', '', 5),
-(7, 30, 'PROD-202102-0006', '2021-03-04', 'DEP-1910-0001', 'orang', '', 50);
 
 -- --------------------------------------------------------
 
@@ -284,8 +274,8 @@ CREATE TABLE `tb_struktural` (
 --
 
 INSERT INTO `tb_struktural` (`id_struktural`, `kode_struktural`, `pegawai_kode`, `divisi_kode`, `jabatan_kode`, `tgl_input`) VALUES
-(1, '201910150820200001', 'PEG-1910-0001', 'DEP-1910-0001', 'JAB-1910-0002', '2019-10-15'),
-(3, '201910150947100003', 'PEG-1910-0002', 'DEP-1910-0002', 'JAB-1910-0001', '2019-10-15');
+(3, '201910150947100003', 'PEG-1910-0002', 'DEP-1910-0002', 'JAB-1910-0001', '2019-10-15'),
+(5, '202103210925240005', 'PEG-2103-0003', 'DEP-1910-0002', 'III/a', '2021-03-21');
 
 --
 -- Indexes for dumped tables
@@ -365,13 +355,13 @@ ALTER TABLE `dt_keluarga`
 -- AUTO_INCREMENT for table `mst_divisi`
 --
 ALTER TABLE `mst_divisi`
-  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mst_jabatan`
 --
 ALTER TABLE `mst_jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `mst_kategori`
@@ -383,19 +373,19 @@ ALTER TABLE `mst_kategori`
 -- AUTO_INCREMENT for table `mst_pegawai`
 --
 ALTER TABLE `mst_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `mst_user`
 --
 ALTER TABLE `mst_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_stock_in`
@@ -413,7 +403,8 @@ ALTER TABLE `tb_stock_out`
 -- AUTO_INCREMENT for table `tb_struktural`
 --
 ALTER TABLE `tb_struktural`
-  MODIFY `id_struktural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_struktural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
