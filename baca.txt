@@ -1,0 +1,15 @@
+admin
+user : admin
+pass : admin
+=================
+manager
+user : manager
+pass : manager
+=================
+gudang
+user : gudang
+pass : gudang
+==================
+staf
+user : ata
+pass : ata
