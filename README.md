@@ -21,3 +21,9 @@
 <a href="https://git-scm.com/"><img align="left" alt="git" width="50px" src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"></a>
 <a href="https://jquery.com/"><img align="left" alt="jquery" width="50px" src="https://wonogiriweb.com/wp-content/uploads/layerslider/Crumina-slider/jquery-logo.png"></a>
 <a href="https://www.javascript.com/"><img align="left" alt="js" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png"></a>
+<a href="https://www.w3schools.com/css/"><img align="left" alt="css" width="50px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJPOOOTBy_UpUTZ6lt9xBAL-r47gVTtvHxwE4WVQR2Ba9xp6VU9OxsXFW9CEIJ9DBu184&usqp=CAU"></a>
+<a href="https://www.w3schools.com/html/"><img align="left" alt="html" width="50px" src="https://2.bp.blogspot.com/--x4o4ysE-g4/WAXlEOQdY3I/AAAAAAAAABU/Yxz3UJ9Un4AyxHhuHrVj1hEbjW-y125nACLcB/s320/hateemel5.png"></a>
+<a href="https://stackoverflow.com/"><img align="left" alt="stackoverflow" width="50px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8wPI6yFz1EC0q3OjtWUBL5ymeSgL2qmQMNWRf9LvTS950mWnVJNUo9kKE2WAvIuMZlbs&usqp=CAU"></a>
+<a href="https://open.spotify.com/user/iyylkh60ax2613ni5jqa6u2mo"><img align="left" alt="spotify" width="50px" src="https://i.pinimg.com/originals/7a/ec/a5/7aeca525afa2209807c15da821b2f2c6.png"></a>
+<a href="https://www.youtube.com/"><img align="left" alt="youtube" width="50px" src="https://i.pinimg.com/originals/2d/2b/e2/2d2be2421911037d80f9921dc29d54c2.jpg"></a>
+<a href="https://google.com"><img align="left" alt="google" width="50px" src="http://4.bp.blogspot.com/-E3cGIqmrTXo/VeckYncc6jI/AAAAAAAACaY/7FhUbUVe8cU/s1600/favicon-logo-google-2015.png"></a>
